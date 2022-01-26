@@ -1,5 +1,8 @@
-import 'package:flutter_task/app/core/utils/dependency_injection.dart';
+import 'package:flutter_task/app/core/config/app_constant.dart';
 import 'package:flutter_task/app/data/providers/auth_provider.dart';
+import 'package:flutter_task/app/data/providers/task_provider.dart';
+import 'package:flutter_task/app/modules/completed_tasks/completed_tasks_binding.dart';
+import 'package:flutter_task/app/modules/tasks/tasks_binding.dart';
 import 'package:get/get.dart';
 
 import 'task_section_controller.dart';
@@ -10,8 +13,18 @@ class TaskSectionBinding extends Bindings {
     Get.lazyPut<TaskSectionController>(
       () => TaskSectionController(),
     );
-    //* we inject in TaskSectionBinding, after logout and relogin, we have to inject again to get controller,
-    //* because we use lazyput for memory performace
-    DependencyInjection.inject();
+    Get.lazyPut<TaskProvider>(
+      () => TaskProvider(),
+      tag: AppConstant.def.all,
+    );
+    Get.lazyPut<TaskProvider>(
+      () => TaskProvider(),
+      tag: AppConstant.def.completed,
+    );
+    Get.lazyPut<AuthProvider>(
+      () => AuthProvider(),
+    );
+    TasksBinding().dependencies();
+    CompletedTasksBinding().dependencies();
   }
 }

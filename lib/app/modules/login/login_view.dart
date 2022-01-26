@@ -17,7 +17,7 @@ class LoginView extends GetView<LoginController> {
         onLogin: _signIn,
         onSignup: _signUp,
         onRecoverPassword: _forgotPwd,
-        onSubmitAnimationCompleted: () => Get.offNamed(Routes.HOME),
+        onSubmitAnimationCompleted: () => Get.offNamed(Routes.TASK_SECTION),
       ),
     );
   }

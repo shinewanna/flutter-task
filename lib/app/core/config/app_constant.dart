@@ -1,5 +1,3 @@
-import 'package:print_color/print_color.dart';
-
 class AppConstant {
   AppConstant._();
 
@@ -17,11 +15,7 @@ class _FirebaseConstant {
 class _DefaultConstant {
   final appName = 'Flutter Task';
   final noInternet = 'No Internet';
-  final taskLimit = 10;
+  final taskLimit = 2;
   final all = 'all';
   final completed = 'completed';
-
-  _DefaultConstant() {
-    Print.magenta('Default Created');
-  }
 }

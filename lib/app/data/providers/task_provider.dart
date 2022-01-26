@@ -18,6 +18,7 @@ class TaskProvider extends GetxController {
 
   Future<void> addTasks(List<String> tasks) async {
     AppUtil.showLoading(text: 'Uploading...');
+
     for (var task in tasks) {
       final taskOb = Task(
         accountId: CacheProvider.myId.getValue(),
@@ -55,8 +56,7 @@ class TaskProvider extends GetxController {
         );
 
     if (isCompleted) {
-      query =
-          query.where(isCompleted, isEqualTo: AppConstant.firebase.isCompleted);
+      query = query.where(AppConstant.firebase.isCompleted, isEqualTo: true);
     }
 
     try {
@@ -113,4 +113,8 @@ class TaskProvider extends GetxController {
   }
 
   deleteTask(String id) => _taskCol.doc(id).delete();
+
+  completeOrUndoTask(String id, bool value) => _taskCol.doc(id).update(
+        {AppConstant.firebase.isCompleted: value},
+      );
 }

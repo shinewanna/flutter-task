@@ -15,7 +15,7 @@ class AddEditTaskView extends GetView<AddEditTaskController> {
   Widget build(BuildContext context) {
     final title = controller.taskArgs!.submitType!.name.toUpperCaseTheFirstChar;
     var buttonLabel =
-        controller.taskArgs!.submitType! == SubmitType.add ? 'Task' : 'Update';
+        controller.taskArgs!.submitType! == SubmitType.add ? 'Add' : 'Update';
     return Scaffold(
       appBar: AppBar(
         title: Text(title),

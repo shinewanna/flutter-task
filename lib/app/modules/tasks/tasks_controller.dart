@@ -5,14 +5,17 @@ import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class TasksController extends GetxController {
-  final _tweetProvider = Get.find<TaskProvider>(tag: AppConstant.def.all);
+  final _taskProvider = Get.find<TaskProvider>(tag: AppConstant.def.all);
   final resp = Resp().obs;
   final refreshController = RefreshController();
 
-  void deleteTask(String id) => _tweetProvider.deleteTask(id);
+  void deleteTask(String id) => _taskProvider.deleteTask(id);
+
+  void completeOrUndoTask(String id, bool value) =>
+      _taskProvider.completeOrUndoTask(id, value);
 
   void getTasks() {
-    _tweetProvider.getTasks(onData: (Resp data) {
+    _taskProvider.getTasks(onData: (Resp data) {
       resp.value = data;
       refreshController.loadComplete();
     }, onNoMore: () {

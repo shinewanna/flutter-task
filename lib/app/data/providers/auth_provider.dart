@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_task/app/data/providers/task_provider.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:flutter_task/app/core/config/app_constant.dart';
 import 'package:flutter_task/app/data/handlers/connectivity_handler.dart';
 import 'package:flutter_task/app/data/providers/cache_provider.dart';
+import 'package:get/instance_manager.dart';
 
 class AuthProvider extends GetxController {
   final _firebaseAuth = FirebaseAuth.instance;
@@ -76,6 +78,8 @@ class AuthProvider extends GetxController {
 
   Future<void> signOut() async {
     await CacheProvider.clear();
+    Get.find<TaskProvider>(tag: AppConstant.def.all).dispose();
+    Get.find<TaskProvider>(tag: AppConstant.def.completed).dispose();
     return _firebaseAuth.signOut();
   }
 }

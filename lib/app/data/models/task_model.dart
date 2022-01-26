@@ -5,7 +5,7 @@ class Task {
   String? accountId;
   String? email;
   String? task;
-  bool? isCompleted;
+  bool isCompleted;
   int? createdAt;
 
   Task(
@@ -13,7 +13,7 @@ class Task {
       this.accountId,
       this.email,
       this.task,
-      this.isCompleted,
+      this.isCompleted = false,
       this.createdAt});
 
   factory Task.fromFirestore(DocumentSnapshot doc) {
@@ -23,7 +23,7 @@ class Task {
       accountId: data['accountId'],
       email: data['email'],
       task: data['task'],
-      isCompleted: data['isCompleted'] ?? false,
+      isCompleted: data['isCompleted'],
       createdAt: data['createdAt'],
     );
   }

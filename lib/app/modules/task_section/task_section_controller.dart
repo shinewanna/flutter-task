@@ -1,11 +1,9 @@
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_task/app/core/config/app_constant.dart';
 import 'package:flutter_task/app/core/utils/app_util.dart';
 import 'package:flutter_task/app/data/handlers/connectivity_handler.dart';
 import 'package:flutter_task/app/data/models/tab_model.dart';
 import 'package:flutter_task/app/data/providers/auth_provider.dart';
-import 'package:flutter_task/app/data/providers/task_provider.dart';
 import 'package:flutter_task/app/modules/completed_tasks/completed_tasks_view.dart';
 import 'package:flutter_task/app/modules/tasks/tasks_view.dart';
 import 'package:flutter_task/app/routes/app_pages.dart';
@@ -44,12 +42,11 @@ class TaskSectionController extends GetxController {
   }
 
   signOut() async {
+    Get.back();
     if (await ConnectivityHandler.noInternet()) return;
     AppUtil.showLoading(text: 'Signing Out...');
-    Get.find<TaskProvider>(tag: AppConstant.def.all).dispose();
-    Get.find<TaskProvider>(tag: AppConstant.def.completed).dispose();
     await Get.find<AuthProvider>().signOut();
     AppUtil.stopLoading();
-    Get.offAllNamed(Routes.LOGIN);
+    Get.offNamed(Routes.LOGIN);
   }
 }

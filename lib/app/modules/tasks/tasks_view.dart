@@ -37,6 +37,8 @@ class TasksView extends GetView<TasksController> {
                   ),
                 ),
                 onDelete: () => controller.deleteTask(task.id!),
+                onComplete: () =>
+                    controller.completeOrUndoTask(task.id!, !task.isCompleted),
               );
             },
             separatorBuilder: (BuildContext context, int index) => Divider(),

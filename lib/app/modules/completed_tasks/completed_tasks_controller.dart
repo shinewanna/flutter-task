@@ -1,20 +1,40 @@
+import 'package:flutter_task/app/core/config/app_constant.dart';
+import 'package:flutter_task/app/data/models/resp_model.dart';
+import 'package:flutter_task/app/data/providers/task_provider.dart';
 import 'package:get/get.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class CompletedTasksController extends GetxController {
-  //TODO: Implement CompletedTasksController
+  final _taskProvider = Get.find<TaskProvider>(tag: AppConstant.def.completed);
+  final resp = Resp().obs;
+  final refreshController = RefreshController();
 
-  final count = 0.obs;
+  void deleteTask(String id) => _taskProvider.deleteTask(id);
+
+  void completeOrUndoTask(String id, bool value) =>
+      _taskProvider.completeOrUndoTask(id, value);
+
+  void getCompletedTasks() {
+    _taskProvider.getTasks(
+        isCompleted: true,
+        onData: (Resp data) {
+          resp.value = data;
+          refreshController.loadComplete();
+        },
+        onNoMore: () {
+          refreshController.loadNoData();
+        });
+  }
+
+  @override
+  void onClose() {
+    refreshController.dispose();
+    super.onClose();
+  }
+
   @override
   void onInit() {
     super.onInit();
+    getCompletedTasks();
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {}
-  void increment() => count.value++;
 }
