@@ -49,7 +49,7 @@ class TaskProvider extends GetxController {
   }) async {
     var query = _taskCol
         .orderBy(AppConstant.firebase.createdAt, descending: true)
-        .limit(AppConstant.def.taskLimit)
+        .limit(AppConstant.def.requestLimit)
         .where(
           AppConstant.firebase.accountId,
           isEqualTo: CacheProvider.myId.getValue(),
@@ -96,7 +96,7 @@ class TaskProvider extends GetxController {
           }
 
           // Determine if there's more users to request
-          _hasMore = users.length == AppConstant.def.taskLimit;
+          _hasMore = users.length == AppConstant.def.requestLimit;
         } else {
           if (_allTask.isNotEmpty && _allTask.length != 1) {
             onNoMore();

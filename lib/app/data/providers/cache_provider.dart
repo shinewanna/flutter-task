@@ -36,5 +36,5 @@ extension StringExt on String? {
 }
 
 extension ListExt on List? {
-  bool get isCanLoadMore => (this!.length % AppConstant.def.taskLimit) == 0;
+  bool get isCanLoadMore => (this!.length % AppConstant.def.requestLimit) == 0;
 }

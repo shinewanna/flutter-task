@@ -1,6 +1,4 @@
 import 'package:get/get.dart';
-
-import 'package:flutter_task/app/data/providers/cache_provider.dart';
 import 'package:flutter_task/app/modules/add_edit_task/add_edit_task_binding.dart';
 import 'package:flutter_task/app/modules/add_edit_task/add_edit_task_view.dart';
 import 'package:flutter_task/app/modules/api_section/api_section_binding.dart';

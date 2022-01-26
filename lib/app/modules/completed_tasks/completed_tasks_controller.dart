@@ -9,12 +9,12 @@ class CompletedTasksController extends GetxController {
   final resp = Resp().obs;
   final refreshController = RefreshController();
 
-  void deleteTask(String id) => _taskProvider.deleteTask(id);
+  deleteTask(String id) => _taskProvider.deleteTask(id);
 
-  void completeOrUndoTask(String id, bool value) =>
+  completeOrUndoTask(String id, bool value) =>
       _taskProvider.completeOrUndoTask(id, value);
 
-  void getCompletedTasks() {
+  getCompletedTasks() {
     _taskProvider.getTasks(
         isCompleted: true,
         onData: (Resp data) {

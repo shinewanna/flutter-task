@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:flutter_task/app/core/config/app_constant.dart';
 import 'package:flutter_task/app/data/handlers/file_handler.dart';

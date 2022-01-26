@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_task/app/core/config/app_constant.dart';
 import 'package:get/get.dart';
 import 'dart:io' show Platform;
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -65,5 +66,6 @@ class AppUtil {
   }
 
   static int getPage(Rx<Resp> resp) =>
-      (((resp.value.data as List).length / 10) + 1).round();
+      (((resp.value.data as List).length / AppConstant.def.requestLimit) + 1)
+          .round();
 }
