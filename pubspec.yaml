@@ -1,0 +1,38 @@
+name: flutter_task
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=2.15.0 <3.0.0'
+
+dependencies: 
+  cupertino_icons: 1.0.2
+  cloud_firestore: 3.1.4
+  connectivity: 3.0.6
+  flutter_login: 3.1.0
+  firebase_auth: 3.3.3
+  flutter_offline: 2.0.0
+  floating_bottom_navigation_bar: 1.5.2
+  get: 4.6.1
+  hive: 2.0.4
+  path_provider: 2.0.8
+  print_color: 3.0.3
+  pull_to_refresh: 2.0.0
+  flutter: 
+    sdk: flutter
+
+dev_dependencies: 
+  flutter_lints: 1.0.0
+  lints: 1.0.1
+  integration_test_tizen: 2.0.1
+  integration_test:
+    sdk: flutter
+  flutter_test: 
+    sdk: flutter
+
+get_cli: 
+  sub_folder: false
+  
+flutter: 
+  uses-material-design: true
+

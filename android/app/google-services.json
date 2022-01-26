@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "349997785592",
+    "project_id": "simple-twitter-app-62cd2",
+    "storage_bucket": "simple-twitter-app-62cd2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:349997785592:android:b8d730e7ca327a3d00760d",
+        "android_client_info": {
+          "package_name": "com.swn.flutter_task"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "349997785592-ghgeo9p9krv2v86hpr56rr763s6mljlv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.swn.flutter_task",
+            "certificate_hash": "e4a9a8174e0ec230a1f7177257f9b6ed07680b07"
+          }
+        },
+        {
+          "client_id": "349997785592-1l0rbm082g4of36drggvjnve847pmsk8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBj25lFviWYyFtAuuJ2M2gW-u9bKly2vAo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "349997785592-1l0rbm082g4of36drggvjnve847pmsk8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "349997785592-srfnee9god110v48vsvjlgu3seflgurn.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.swn.simpleTwitterApp"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:349997785592:android:2ebccfe89520b71c00760d",
+        "android_client_info": {
+          "package_name": "com.swn.simple_twitter_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "349997785592-d02k8epmufrfnd0sfm1pemr4nu2kktet.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.swn.simple_twitter_app",
+            "certificate_hash": "e4a9a8174e0ec230a1f7177257f9b6ed07680b07"
+          }
+        },
+        {
+          "client_id": "349997785592-1l0rbm082g4of36drggvjnve847pmsk8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBj25lFviWYyFtAuuJ2M2gW-u9bKly2vAo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "349997785592-1l0rbm082g4of36drggvjnve847pmsk8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "349997785592-srfnee9god110v48vsvjlgu3seflgurn.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.swn.simpleTwitterApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
