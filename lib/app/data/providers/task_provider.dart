@@ -22,7 +22,6 @@ class TaskProvider extends GetxController {
     for (var task in tasks) {
       final taskOb = Task(
         accountId: CacheProvider.myId.getValue(),
-        email: CacheProvider.email.getValue(),
         task: task,
         createdAt: DateTime.now().millisecondsSinceEpoch,
       );

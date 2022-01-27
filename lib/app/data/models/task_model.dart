@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Task {
   String? id;
   String? accountId;
-  String? email;
   String? task;
   bool isCompleted;
   int? createdAt;
@@ -11,7 +10,6 @@ class Task {
   Task(
       {this.id,
       this.accountId,
-      this.email,
       this.task,
       this.isCompleted = false,
       this.createdAt});
@@ -21,7 +19,6 @@ class Task {
     return Task(
       id: doc.id,
       accountId: data['accountId'],
-      email: data['email'],
       task: data['task'],
       isCompleted: data['isCompleted'],
       createdAt: data['createdAt'],
@@ -31,7 +28,6 @@ class Task {
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['accountId'] = accountId;
-    data['email'] = email;
     data['task'] = task;
     data['isCompleted'] = isCompleted;
     data['createdAt'] = createdAt;

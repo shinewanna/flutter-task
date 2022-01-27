@@ -20,7 +20,7 @@ class AuthProvider extends GetxController {
     try {
       final UserCredential user = await _firebaseAuth
           .createUserWithEmailAndPassword(email: email!, password: password!);
-      _setUserInfo(user);
+      _setUserId(user);
       return null;
     } on FirebaseAuthException catch (e) {
       return _chooseErrorMessage(e);
@@ -37,7 +37,7 @@ class AuthProvider extends GetxController {
     try {
       final UserCredential user = await _firebaseAuth
           .signInWithEmailAndPassword(email: email, password: password);
-      _setUserInfo(user);
+      _setUserId(user);
       return null;
     } on FirebaseAuthException catch (e) {
       return _chooseErrorMessage(e);
@@ -56,12 +56,9 @@ class AuthProvider extends GetxController {
     }
   }
 
-  Future<void> _setUserInfo(UserCredential userCredential) async {
+  Future<void> _setUserId(UserCredential userCredential) async {
     if (userCredential.user == null) return;
-    await Future.wait([
-      CacheProvider.myId.setValue(userCredential.user!.uid),
-      CacheProvider.email.setValue(userCredential.user!.email),
-    ]);
+    await CacheProvider.myId.setValue(userCredential.user!.uid);
   }
 
   _chooseErrorMessage(FirebaseAuthException e) {

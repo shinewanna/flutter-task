@@ -62,9 +62,8 @@ class ApiProvider extends GetxController {
 
     dio.options.headers = getHeader();
     final options = buildCacheOptions(
-      const Duration(days: 7),
-      maxStale: const Duration(days: 10),
-      forceRefresh: true,
+      const Duration(days: 1),
+      forceRefresh: false,
     );
 
     Print.white('${dio.options.baseUrl}$url');

@@ -3,11 +3,11 @@ import 'package:flutter_task/app/core/config/app_constant.dart';
 
 class CacheProvider {
   CacheProvider._();
-  static var box = Hive.box(cache);
+  static final box = Hive.box(cache);
 
   static const cache = 'cache';
   static const myId = 'myId';
-  static const email = 'email';
+  static const users = 'users';
 
   static Future<void> open(path) {
     Hive.init(path);
