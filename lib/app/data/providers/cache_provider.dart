@@ -7,12 +7,6 @@ class CacheProvider {
 
   static const cache = 'cache';
   static const myId = 'myId';
-  static const users = 'users';
-
-  static Future<void> open(path) {
-    Hive.init(path);
-    return Hive.openBox(CacheProvider.cache);
-  }
 
   static Future<void> clear() => box.clear();
 }

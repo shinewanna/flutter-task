@@ -7,6 +7,7 @@ class AppConstant {
   static final def = _DefaultConstant();
   static final url = _UrlConstant();
   static final secret = SecretConstant();
+  static final file = _FileConstant();
 }
 
 class _FirebaseConstant {
@@ -27,4 +28,8 @@ class _DefaultConstant {
 class _UrlConstant {
   final base = 'https://dummyapi.io/data/v1/';
   final user = 'user';
+}
+
+class _FileConstant {
+  final user = 'assets/user.png';
 }

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_task/app/data/models/task_model.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:flutter_task/app/core/config/app_constant.dart';
@@ -29,6 +30,7 @@ class TaskProvider extends GetxController {
     }
     AppUtil.stopLoading();
     await Future.delayed(Duration(milliseconds: 50));
+    _showSnack('Added');
   }
 
   Future<void> editTask(String id, String task) async {
@@ -39,6 +41,7 @@ class TaskProvider extends GetxController {
     });
     AppUtil.stopLoading();
     await Future.delayed(Duration(milliseconds: 50));
+    _showSnack('Edited');
   }
 
   void getTasks({
@@ -111,9 +114,21 @@ class TaskProvider extends GetxController {
     }
   }
 
-  deleteTask(String id) => _taskCol.doc(id).delete();
+  deleteTask(String id) async {
+    await _taskCol.doc(id).delete();
+    _showSnack('Deleted');
+  }
 
-  completeOrUndoTask(String id, bool value) => _taskCol.doc(id).update(
-        {AppConstant.firebase.isCompleted: value},
-      );
+  completeOrUndoTask(String id, bool value) async {
+    await _taskCol.doc(id).update(
+      {AppConstant.firebase.isCompleted: value},
+    );
+    _showSnack(value ? 'Made complete' : 'Undo');
+  }
+
+  _showSnack(String title) {
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      AppUtil.snack(title, msg: 'Success');
+    });
+  }
 }

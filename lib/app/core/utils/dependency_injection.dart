@@ -5,7 +5,10 @@ import 'package:get/instance_manager.dart';
 
 class DependencyInjection {
   DependencyInjection.injectDio() {
-    final dio = Dio(BaseOptions(baseUrl: AppConstant.url.base));
+    final dio = Dio(BaseOptions(baseUrl: AppConstant.url.base, headers: {
+      'Accept': 'application/json,text/plain,*/*',
+      'app-id': AppConstant.secret.appIdKey,
+    }));
     Get.lazyPut(() => dio);
     Get.lazyPut(() => ApiProvider());
   }

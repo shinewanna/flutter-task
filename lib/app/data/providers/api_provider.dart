@@ -9,13 +9,6 @@ import 'package:flutter_task/app/data/enums/request_type.dart';
 import 'package:flutter_task/app/data/models/resp_model.dart';
 
 class ApiProvider extends GetxController {
-  Map<String, String> getHeader() {
-    return <String, String>{
-      'Accept': 'application/json,text/plain,*/*',
-      'app-id': AppConstant.secret.apiKey,
-    };
-  }
-
   Future<Resp> getReq(
     String url, {
     Map<String, dynamic>? params,
@@ -58,8 +51,6 @@ class ApiProvider extends GetxController {
     FormData? fd,
   }) async {
     final dio = Get.find<Dio>();
-
-    dio.options.headers = getHeader();
 
     Print.white('${dio.options.baseUrl}$url');
 

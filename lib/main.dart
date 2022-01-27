@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_task/app/data/models/user_model.dart';
 import 'package:get/get.dart';
 import 'package:flutter_task/app/core/config/app_constant.dart';
 import 'package:flutter_task/app/data/handlers/file_handler.dart';
 import 'package:flutter_task/app/data/providers/cache_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:hive/hive.dart';
 
 import 'app/routes/app_pages.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  await CacheProvider.open(await FileHandler().getPath);
+  Hive.init(await FileHandler().getPath);
+  Hive.registerAdapter(UserDataAdapter());
+  Hive.openBox(CacheProvider.cache);
   runApp(PrePage());
 }
 
@@ -29,7 +33,10 @@ class PrePage extends StatelessWidget {
           centerTitle: true,
           iconTheme: IconThemeData(color: Colors.black54),
           titleTextStyle: TextStyle(
-              color: Colors.black54, fontSize: 18, fontWeight: FontWeight.bold),
+            color: Colors.black54,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );

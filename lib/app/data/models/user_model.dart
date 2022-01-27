@@ -1,3 +1,6 @@
+import 'package:hive/hive.dart';
+part 'user_model.g.dart';
+
 class User {
   List<UserData>? data;
   int? total;
@@ -30,11 +33,17 @@ class User {
   }
 }
 
+@HiveType(typeId: 0)
 class UserData {
+  @HiveField(0)
   String? id;
+  @HiveField(1)
   String? title;
+  @HiveField(2)
   String? firstName;
+  @HiveField(3)
   String? lastName;
+  @HiveField(4)
   String? picture;
 
   UserData({this.id, this.title, this.firstName, this.lastName, this.picture});

@@ -7,6 +7,7 @@ import 'package:flutter_task/main.dart' as app;
 
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+  WidgetController.hitTestWarningShouldBeFatal = true;
   testWidgets('Task Section Test', (tester) async {
     app.main();
     await tester.pumpAndSettle(Duration(seconds: 1));
@@ -29,7 +30,6 @@ void main() {
     await tester.pumpAndSettle();
     //* Check context is navigate to Home page
     expect(find.byTooltip('Add Tasks'), findsOneWidget);
-
     final navigateToAddTaskPageButton = find.byTooltip('Add Tasks');
     await tester.tap(navigateToAddTaskPageButton);
     await tester.pumpAndSettle();
@@ -38,39 +38,18 @@ void main() {
     await tester.pumpAndSettle();
     //* Validate expect
     expect(find.text('Field can not be empty'), findsOneWidget);
-
     final taskForm = find.byType(TextFormField).first;
-    final text = 'Take the car key';
+    final text = 'Code';
     await tester.enterText(taskForm, text);
     await tester.pumpAndSettle();
     await tester.tap(uploadTaskButton);
     await tester.pumpAndSettle();
     //* After upload new task, that task have to find in tasks view
     expect(find.text(text), findsWidgets);
-    //* Make Complete
-    final updateButton = find.byIcon(Icons.edit).first;
-    await tester.tap(updateButton);
-    await tester.tap(find.text('Complete').last);
-    await tester.tap(updateButton);
+    //* Completed tasks
+    await tester.tap(find.byIcon(Icons.done_all));
     await tester.pumpAndSettle();
-    //* Delete
-    await tester.tap(find.text('Delete').last);
-    await tester.pumpAndSettle();
-    await tester.tap(find.text('Ok'));
-    await tester.pumpAndSettle();
-    await tester.tap(updateButton);
-    await tester.pumpAndSettle();
-    //* Edit
-    await tester.tap(find.text('Edit').last);
-    await tester.pumpAndSettle();
-    final editText = 'Sleep, Eat, Code';
-    await tester.enterText(taskForm, editText);
-    await tester.pumpAndSettle();
-    await tester.tap(uploadTaskButton);
-    await tester.pumpAndSettle();
-    //* Check edited text found
-    expect(find.text(editText), findsWidgets);
-
+    //* Sign Out
     final signOutButton = find.byIcon(Icons.logout);
     await tester.tap(signOutButton);
     await tester.pumpAndSettle();
