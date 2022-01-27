@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: constant_identifier_names
 import 'package:get/get.dart';
 import 'package:flutter_task/app/modules/add_edit_task/add_edit_task_binding.dart';
 import 'package:flutter_task/app/modules/add_edit_task/add_edit_task_view.dart';
@@ -14,14 +16,12 @@ import 'package:flutter_task/app/modules/task_section/task_section_view.dart';
 import 'package:flutter_task/app/modules/tasks/tasks_binding.dart';
 import 'package:flutter_task/app/modules/tasks/tasks_view.dart';
 
-// ignore_for_file: constant_identifier_names
-
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.HOME;
+  static String INITIAL = Routes.HOME;
 
   static final routes = [
     GetPage(

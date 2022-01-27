@@ -11,7 +11,7 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter Task'),
+        title: FlutterLogo(),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

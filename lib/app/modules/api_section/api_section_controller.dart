@@ -1,5 +1,6 @@
 import 'package:flutter_task/app/core/utils/app_util.dart';
 import 'package:flutter_task/app/data/enums/msg_state.dart';
+import 'package:flutter_task/app/data/handlers/bounce_handler.dart';
 import 'package:flutter_task/app/data/models/resp_model.dart';
 import 'package:flutter_task/app/data/models/user_model.dart';
 import 'package:flutter_task/app/data/repositories/user_repository.dart';
@@ -11,6 +12,7 @@ class ApiSectionController extends GetxController {
   final resp = Resp().obs;
   final refreshController = RefreshController();
   final _repo = Get.find<UserRepository>();
+  final _bounceHandler = BounceHandler();
   var _users = <UserData>[];
 
   getUsers({bool isMore = false}) async {
@@ -30,20 +32,20 @@ class ApiSectionController extends GetxController {
   }
 
   search(String value) {
-    Print.green(_users.length);
-    final users = <UserData>[];
-    if (value.isEmpty) {
-      users.addAll(_users);
-      resp.value = Resp(data: users, message: MsgState.data);
-      return;
-    }
-    for (var user in _users) {
-      if (_isMatch(value, user)) {
-        users.add(user);
+    _bounceHandler.run(() {
+      final users = <UserData>[];
+      if (value.isEmpty) {
+        users.addAll(_users);
+        resp.value = Resp(data: users, message: MsgState.data);
+        return;
       }
-    }
-    Print.red(users.length);
-    resp.value = Resp(data: users, message: MsgState.data);
+      for (var user in _users) {
+        if (_isMatch(value, user)) {
+          users.add(user);
+        }
+      }
+      resp.value = Resp(data: users, message: MsgState.data);
+    });
   }
 
   bool _isMatch(String value, UserData user) {

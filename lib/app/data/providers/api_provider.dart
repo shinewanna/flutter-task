@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:dio_http_cache/dio_http_cache.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/instance_manager.dart';
 import 'package:print_color/print_color.dart';
@@ -61,10 +60,6 @@ class ApiProvider extends GetxController {
     final dio = Get.find<Dio>();
 
     dio.options.headers = getHeader();
-    final options = buildCacheOptions(
-      const Duration(days: 1),
-      forceRefresh: false,
-    );
 
     Print.white('${dio.options.baseUrl}$url');
 
@@ -75,7 +70,6 @@ class ApiProvider extends GetxController {
           response = await dio.get(
             url,
             queryParameters: params,
-            options: options,
           );
           break;
         //* In case of Post and Delete
@@ -90,14 +84,12 @@ class ApiProvider extends GetxController {
           response = await dio.delete(
             url,
             queryParameters: params,
-            options: options,
           );
           break;
         default:
           response = await dio.get(
             url,
             queryParameters: params,
-            options: options,
           );
           break;
       }

@@ -18,7 +18,7 @@ class TaskSectionController extends GetxController {
   ];
   final views = [
     TabData(
-      title: FlutterLogo(),
+      title: Text('All Tasks'),
       view: TasksView(),
     ),
     TabData(

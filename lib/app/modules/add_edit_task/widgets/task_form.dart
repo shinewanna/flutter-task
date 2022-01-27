@@ -19,7 +19,6 @@ class TaskForm extends GetView<AddEditTaskController> {
         controller: task,
         hint: 'Add Task',
         onChanged: (_) => controller.onTextFieldChange(index),
-        maxLength: 280,
         autoFocus: index == 0,
         trailing: task.text.isEmpty
             ? IconButton(
