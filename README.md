@@ -47,7 +47,7 @@ Sign Up         |  Forgot Password       |   Task Section/All Tasks             
 
 Add Task        |  Edit Task       |   Delete Task               |  Sign Out
 :-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
-<img src="https://user-images.githubusercontent.com/39454969/151494242-d301b2ee-e94e-44e3-9a01-3108acb9ffd6.jpg" width="200" height="400"/>|<img src="https://user-images.githubusercontent.com/39454969/151494244-14e015e7-ed74-490f-8230-47f278129d7e.jpg" width="200" height="400"/>|<img src="https://user-images.githubusercontent.com/39454969/151494247-0490afd3-dd6d-4781-b1e4-d09649a848f5.jpg" width="200" height="400"/>|<img src="https://user-images.githubusercontent.com/39454969/151494252-81a05fc3-d3d6-4e5b-98e7-6fc11d6fabdd.jp" width="200" height="400"/>|
+<img src="https://user-images.githubusercontent.com/39454969/151494242-d301b2ee-e94e-44e3-9a01-3108acb9ffd6.jpg" width="200" height="400"/>|<img src="https://user-images.githubusercontent.com/39454969/151494244-14e015e7-ed74-490f-8230-47f278129d7e.jpg" width="200" height="400"/>|<img src="https://user-images.githubusercontent.com/39454969/151494247-0490afd3-dd6d-4781-b1e4-d09649a848f5.jpg" width="200" height="400"/>|<img src="https://user-images.githubusercontent.com/39454969/151494252-81a05fc3-d3d6-4e5b-98e7-6fc11d6fabdd.jpg" width="200" height="400"/>|
 
 
 
