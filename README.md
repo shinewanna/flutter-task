@@ -4,7 +4,7 @@
 1. Fetch data from network
 2. Cache with Hive
 3. Search locally
-4. Fetch with Pagination
+4. Fetch with pagination
 
 # Task Section
 1. Email/password Sign up
