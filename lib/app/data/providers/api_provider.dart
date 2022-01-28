@@ -123,9 +123,14 @@ class ApiProvider extends GetxController {
       throw Exception('Bad response format:$e');
     } on DioError catch (e) {
       if (e.type == DioErrorType.other) {
+        if (e.message.contains('SocketException')) {
+          final respOb = Resp();
+          respOb.message = MsgState.error;
+          respOb.data = AppConstant.def.noInternet;
+          return respOb;
+        }
         throw Exception(e);
       }
-      Print.red(e.error);
       final respOb = Resp();
       respOb.message = MsgState.error;
       respOb.data = 'Server Timeout';

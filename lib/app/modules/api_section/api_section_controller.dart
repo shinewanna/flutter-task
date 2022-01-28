@@ -31,12 +31,16 @@ class ApiSectionController extends GetxController {
       moreResp.data = users;
       resp.value = moreResp;
       refreshController.loadComplete();
-      _respCacheProvider.setValues(users, RespCacheProvider.users);
+      if (resp.value.message.isData) {
+        _respCacheProvider.setValues(users, RespCacheProvider.users);
+      }
     } else {
       resp.value = await _repo.getUsers();
       refreshController.refreshCompleted();
-      _respCacheProvider.setValues(
-          resp.value.data as List<UserData>, RespCacheProvider.users);
+      if (resp.value.message.isData) {
+        _respCacheProvider.setValues(
+            resp.value.data as List<UserData>, RespCacheProvider.users);
+      }
     }
   }
 

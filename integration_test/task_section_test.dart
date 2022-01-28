@@ -24,7 +24,7 @@ void main() {
     await tester.pumpAndSettle();
     await tester.enterText(emailForm, 'shinewanna97@gmail.com');
     await tester.pumpAndSettle();
-    await tester.enterText(passwordForm, '12345678');
+    await tester.enterText(passwordForm, '12345679');
     await tester.pumpAndSettle();
     await tester.tap(loginButton);
     await tester.pumpAndSettle();
@@ -43,12 +43,12 @@ void main() {
     await tester.enterText(taskForm, text);
     await tester.pumpAndSettle();
     await tester.tap(uploadTaskButton);
-    await tester.pumpAndSettle();
+    await tester.pumpAndSettle(Duration(seconds: 2));
     //* After upload new task, that task have to find in tasks view
     expect(find.text(text), findsWidgets);
     //* Completed tasks
     await tester.tap(find.byIcon(Icons.done_all));
-    await tester.pumpAndSettle();
+    await tester.pumpAndSettle(Duration(seconds: 1));
     //* Sign Out
     final signOutButton = find.byIcon(Icons.logout);
     await tester.tap(signOutButton);
