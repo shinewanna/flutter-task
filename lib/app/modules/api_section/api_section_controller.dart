@@ -16,14 +16,6 @@ class ApiSectionController extends GetxController {
   final _respCacheProvider = RespCacheProvider();
 
   getUsers({bool isMore = false}) async {
-    //* If cache exists show the cache first and then requset the fresh network data
-    if (await _respCacheProvider.isExists(boxName: RespCacheProvider.users)) {
-      resp.value = Resp(
-        data: await _respCacheProvider
-            .getValues<UserData>(RespCacheProvider.users),
-        message: MsgState.data,
-      );
-    }
     if (isMore) {
       final moreResp = await _repo.getUsers(page: AppUtil.getPage(resp));
       final users = resp.value.data as List<UserData>;
@@ -35,6 +27,14 @@ class ApiSectionController extends GetxController {
         _respCacheProvider.setValues(users, RespCacheProvider.users);
       }
     } else {
+      //* If cache exists show the cache first and then requset the fresh network data
+      if (await _respCacheProvider.isExists(boxName: RespCacheProvider.users)) {
+        resp.value = Resp(
+          data: await _respCacheProvider
+              .getValues<UserData>(RespCacheProvider.users),
+          message: MsgState.data,
+        );
+      }
       resp.value = await _repo.getUsers();
       refreshController.refreshCompleted();
       if (resp.value.message.isData) {
